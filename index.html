@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factory OS - Industrial Revolution Timeline</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="factory-os">
+        <header class="os-header">
+            <div class="os-logo">Factory OS v1.0</div>
+            <div class="os-status">SYSTEM READY | TIME MACHINE ONLINE</div>
+        </header>
+
+        <div class="factory-display">
+            <div class="conveyor-belt">
+                <!-- Era packages will be inserted by JavaScript -->
+            </div>
+            
+            <div class="timeline-viewport">
+                <div class="era-details" id="eraDetails">
+                    <div class="detail-content">
+                        <p>> Select an era to inspect or type commands below</p>
+                        <p>> Try: "inspect 1.0" or "compare 1.0 4.0"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="terminal">
+            <div class="terminal-output" id="terminalOutput">
+                <p>> Factory OS Time Machine initialized</p>
+                <p>> Loading industrial revolution packages...</p>
+                <p>> Type 'help' for command list or click era packages</p>
+            </div>
+            <div class="input-line">
+                <span class="prompt">>></span>
+                <input type="text" class="command-input" id="commandInput" autofocus>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

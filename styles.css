@@ -1,0 +1,263 @@
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', monospace;
+}
+
+body {
+    background-color: #0a0a0a;
+    color: #00ff00;
+    line-height: 1.5;
+    overflow-x: hidden;
+}
+
+.factory-os {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-left: 1px solid #333;
+    border-right: 1px solid #333;
+}
+
+.os-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #111;
+    border-bottom: 1px solid #00ff00;
+}
+
+.os-logo {
+    font-weight: bold;
+    text-shadow: 0 0 5px #00ff00;
+}
+
+.os-status {
+    color: #00aa00;
+}
+
+.factory-display {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #050505;
+    position: relative;
+}
+
+.conveyor-belt {
+    display: flex;
+    padding: 30px 0;
+    background: repeating-linear-gradient(
+        45deg,
+        #111,
+        #111 10px,
+        #0a0a0a 10px,
+        #0a0a0a 20px
+    );
+    border: 1px solid #333;
+    margin-bottom: 20px;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.conveyor-belt::-webkit-scrollbar {
+    display: none;
+}
+
+.era-package {
+    min-width: 200px;
+    height: 120px;
+    margin: 0 15px;
+    background: #111;
+    border: 3px solid #333;
+    position: relative;
+    box-shadow: 0 0 15px rgba(0,255,255,0.1);
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.era-package:hover {
+    border-color: #00ff00;
+    box-shadow: 0 0 20px rgba(0,255,255,0.3);
+}
+
+.era-label {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.era-year {
+    font-size: 0.8rem;
+    color: #00aa00;
+}
+
+.era-package::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,255,255,0.05);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.era-package:hover::after {
+    opacity: 1;
+}
+
+.timeline-viewport {
+    flex-grow: 1;
+    border: 1px solid #333;
+    padding: 15px;
+    background-color: rgba(0,20,0,0.1);
+    min-height: 200px;
+}
+
+.era-details {
+    color: #00ff00;
+}
+
+.detail-content h2 {
+    margin-bottom: 10px;
+    color: #00cc00;
+}
+
+.detail-content ul {
+    margin-left: 20px;
+    margin-bottom: 15px;
+}
+
+.terminal {
+    border-top: 1px solid #00ff00;
+    background-color: #050505;
+    padding: 10px;
+}
+
+.terminal-output {
+    height: 150px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #333;
+    padding: 5px;
+    font-size: 0.9rem;
+}
+
+.terminal-output p {
+    margin-bottom: 5px;
+}
+
+.input-line {
+    display: flex;
+    align-items: center;
+}
+
+.prompt {
+    margin-right: 10px;
+    color: #00ff00;
+}
+
+.command-input {
+    flex-grow: 1;
+    background: transparent;
+    border: none;
+    color: #00ff00;
+    outline: none;
+    font-size: 1rem;
+}
+
+/* Era-specific effects */
+.era-1::before {
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, transparent 70%);
+    animation: steam 4s infinite;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.era-2::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background: #ff0;
+    bottom: 0;
+    animation: electricPulse 2s infinite;
+}
+
+.era-3::before {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #0ff;
+    border-radius: 50%;
+    top: 10px;
+    right: 10px;
+    animation: blink 1s infinite;
+}
+
+.era-4::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: 
+        linear-gradient(90deg, transparent 45%, rgba(0,255,255,0.1) 50%, transparent 55%);
+    background-size: 200% 100%;
+    animation: dataFlow 3s linear infinite;
+}
+
+@keyframes steam {
+    0% { transform: translateX(-50%) scale(0.5); opacity: 0; }
+    50% { opacity: 0.6; }
+    100% { transform: translateX(-50%) scale(1.5); opacity: 0; }
+}
+
+@keyframes electricPulse {
+    0% { box-shadow: 0 0 5px #ff0; }
+    50% { box-shadow: 0 0 20px #ff0; }
+    100% { box-shadow: 0 0 5px #ff0; }
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+@keyframes dataFlow {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .conveyor-belt {
+        padding: 15px 0;
+    }
+    
+    .era-package {
+        min-width: 150px;
+        height: 100px;
+    }
+    
+    .terminal-output {
+        height: 100px;
+    }
+}
